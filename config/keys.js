@@ -1,4 +1,4 @@
 module.exports = {
-  mongoURI: "YOUR_MONGO_URI_HERE",
+  mongoURI: "mongodb+srv://fintech-4kgjy.mongodb.net/test",
   secretOrKey: "secret"
 };
