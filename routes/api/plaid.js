@@ -69,4 +69,18 @@ router.post(
 	}
   );
 
+// @route DELETE api/plaid/accounts/:id
+// @desc Delete account with given id
+
+router.delete(
+	"/accounts/:id",
+	passport.authenticate("jwt", { session: false }),
+	(req, res) => {
+	  Account.findById(req.params.id).then(account => {
+		// Delete account
+		account.remove().then(() => res.json({ success: true }));
+	  });
+})
+	
+
 module.exports = router;
