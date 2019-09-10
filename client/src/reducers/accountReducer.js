@@ -6,7 +6,7 @@ import {
 	GET_TRANSACTIONS,
 	TRANSACTIONS_LOADING
   } from "../actions/types";
-import { STATES } from "mongoose";
+
 
   const initialState = {
 	accounts: [],
