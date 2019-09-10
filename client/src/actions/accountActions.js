@@ -90,3 +90,10 @@ export const getTransactions = plaidData => dispatch => {
 		})
 	  );
   };
+
+// Transactions loading
+export const setTransactionsLoading = () => {
+	return {
+	  type: TRANSACTIONS_LOADING
+	};
+  };
