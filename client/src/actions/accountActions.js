@@ -97,3 +97,5 @@ export const setTransactionsLoading = () => {
 	  type: TRANSACTIONS_LOADING
 	};
   };
+
+  
