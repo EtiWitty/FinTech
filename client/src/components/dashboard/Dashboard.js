@@ -35,7 +35,7 @@ let dashboardContent;
 
 if (accounts === null || accountsLoading) {
 
-      dashboardContent = <Spinner />;
+    dashboardContent = <Spinner />;
     } else if (accounts.length > 0) {
       // User has accounts linked
       dashboardContent = <Accounts user={user} accounts={accounts} />;

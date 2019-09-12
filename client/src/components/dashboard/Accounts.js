@@ -9,11 +9,13 @@ import {
 } from "../../actions/accountActions";
 import { logoutUser } from "../../actions/authActions";
 import MaterialTable from "material-table"; // https://mbrn.github.io/material-table/#/
+
 class Accounts extends Component {
   componentDidMount() {
     const { accounts } = this.props;
     this.props.getTransactions(accounts);
   }
+
 // Add account
   handleOnSuccess = (token, metadata) => {
     const { accounts } = this.props;
@@ -24,6 +26,7 @@ class Accounts extends Component {
     };
 this.props.addAccount(plaidData);
   };
+
 // Delete account
   onDeleteClick = id => {
     const { accounts } = this.props;
@@ -33,6 +36,7 @@ this.props.addAccount(plaidData);
     };
     this.props.deleteAccount(accountData);
   };
+
 // Logout
   onLogoutClick = e => {
     e.preventDefault();
@@ -53,6 +57,7 @@ let accountItems = accounts.map(account => (
         <b>{account.institutionName}</b>
       </li>
     ));
+
 // Setting up data table
     const transactionsColumns = [
       { title: "Account", field: "account" },
@@ -154,6 +159,7 @@ Accounts.propTypes = {
   const mapStateToProps = state => ({
 	plaid: state.plaid
   });
+  
   export default connect(
 	mapStateToProps,
 	{ logoutUser, getTransactions, addAccount, deleteAccount }
