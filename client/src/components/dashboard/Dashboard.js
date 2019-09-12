@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import { getAccounts, addAccount } from "../../actions/accountActions";
 import Accounts from "./Accounts";
+import Spinner from "./Spinner";
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -15,20 +16,26 @@ class Dashboard extends Component {
     e.preventDefault();
     this.props.logoutUser();
   };
+
 // Add account
   handleOnSuccess = (token, metadata) => {
     const plaidData = {
       public_token: token,
       metadata: metadata
     };
+
 this.props.addAccount(plaidData);
   };
+
 render() {
     const { user } = this.props.auth;
     const { accounts, accountsLoading } = this.props.plaid;
+
 let dashboardContent;
+
 if (accounts === null || accountsLoading) {
-      dashboardContent = <p className="center-align">Loading...</p>;
+
+      dashboardContent = <Spinner />;
     } else if (accounts.length > 0) {
       // User has accounts linked
       dashboardContent = <Accounts user={user} accounts={accounts} />;
