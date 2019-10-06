@@ -16,6 +16,11 @@ app.use(
 );
 app.use(bodyParser.json());
 
+//serve up static assets (on heroku)
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static("client/build"));
+// }
+
 // DB Config
 const db = require("./config/keys").mongoURI;
 

@@ -1,3 +1,4 @@
 /node_modules
 package-lock.json
 routes/api/secrets.js
+config/keys.js
