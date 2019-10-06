@@ -8,10 +8,20 @@ const mongoose = require("mongoose");
 const Account = require("../../models/Account");
 const User = require("../../models/User");
 
-const secrets = require("./secrets");
-const PLAID_CLIENT_ID = secrets.PLAID_CLIENT_ID;
-const PLAID_SECRET = secrets.PLAID_SECRET;
-const PLAID_PUBLIC_KEY = secrets.PLAID_PUBLIC_KEY;
+let PLAID_CLIENT_ID;
+let PLAID_SECRET;
+let PLAID_PUBLIC_KEY;
+
+if (process.env.PLAID_CLIENT_ID) {
+	PLAID_CLIENT_ID = process.env.PLAID_CLIENT_ID;
+	PLAID_SECRET = process.env.PLAID_SECRET;
+	PLAID_PUBLIC_KEY = process.env.PLAID_PUBLIC_KEY;
+} else {
+	const secrets = require("./secrets");
+	PLAID_CLIENT_ID = secrets.PLAID_CLIENT_ID;
+	PLAID_SECRET = secrets.PLAID_SECRET;
+	PLAID_PUBLIC_KEY = secrets.PLAID_PUBLIC_KEY;
+}
 
 const client = new plaid.Client(
 	PLAID_CLIENT_ID,
